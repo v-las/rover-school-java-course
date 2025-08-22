@@ -87,17 +87,17 @@ public class HomeWork002 {
 
         System.out.println("Task3");
 
-        double pirateLootInPiastres = 10000;
+        int pirateLootInPiastres = 10000;
         int crewSize = 50;
 
-        double shipOwnerLoot = pirateLootInPiastres / 2;
-        double captainsLoot = shipOwnerLoot / 2;
-        double crewMemberLoot = captainsLoot / crewSize;
+        int shipOwnerLoot = pirateLootInPiastres / 2;
+        int captainsLoot = shipOwnerLoot / 2;
+        int crewMemberLoot = captainsLoot / crewSize;
 
-        System.out.printf("ship Owner Loot: %.2f%n", shipOwnerLoot);
-        System.out.printf("Captains loot: %.2f%n", captainsLoot);
-        System.out.printf("crew member Loot: %.2f%n", crewMemberLoot);
-        System.out.printf("Captain Jack The Sparrow loot: %.2f%n", captainsLoot + shipOwnerLoot + crewMemberLoot);
+        System.out.printf("ship Owner Loot: %d%n", shipOwnerLoot);
+        System.out.printf("Captains loot: %d%n", captainsLoot);
+        System.out.printf("crew member Loot: %d%n", crewMemberLoot);
+        System.out.printf("Captain Jack The Sparrow loot: %d%n", captainsLoot + shipOwnerLoot + crewMemberLoot);
     }
 
     private static boolean isEven(double number) {
