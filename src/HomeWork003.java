@@ -92,9 +92,7 @@ public class HomeWork003 {
         в степень.
 */
 
-        for (double i = 1, j = 5; j < 10000; i++, j = Math.pow(5, i)) {
-            System.out.println("j = " + j);
-        }
+        for (double i = 1, j = 5; j < 10000; System.out.println("j = " + j), i++, j = Math.pow(5, i));
 
 /*
         Задача №3

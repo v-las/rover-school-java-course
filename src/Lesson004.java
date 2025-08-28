@@ -2,7 +2,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-public class Lesson005 {
+public class Lesson004 {
     public static void main(String[] args) {
 
         int[] ints = new int[5];
@@ -107,5 +107,8 @@ public class Lesson005 {
         System.out.println("str.replace(\"a\", \"x\") = " + str.replace("a", "x"));
         System.out.println("String.join(\"||\", strArr) = " + String.join("||", strArr));
         System.out.println("Arrays.toString(str.split(\"A\")) = " + Arrays.toString(str.split("A")));
+
+        char a = 'ф' + '0';
+        System.out.println("a = " + a);
     }
 }
