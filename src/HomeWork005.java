@@ -44,7 +44,7 @@ public class HomeWork005 {
 
     Дан массив:
     int[] array = {9, 2, 6, 4, 5, 12, 7, 8, 6};
-    необходимо вывести минимальное значение массива.
+    необходимо вывести мицнимальное значение массива.
 */
 
     public static int task03(int[] intArray) {
@@ -73,7 +73,11 @@ public class HomeWork005 {
 
     public static int task01e(int[][] int2dArray) {
         return Arrays.stream(int2dArray)
-                .reduce(0, (acc, cur) -> acc + Arrays.stream(cur).sum(), Integer::sum);
+                .reduce(
+                        0,
+                        (acc, cur) -> acc + Arrays.stream(cur).sum(),
+                        Integer::sum
+                );
     }
 
 /*
@@ -85,11 +89,9 @@ public class HomeWork005 {
 */
 
     public static int task02e(int[][] int2dArray) {
-        int[] flattenArray = Arrays.stream(int2dArray)
+        return Arrays.stream(int2dArray)
                 .flatMapToInt(Arrays::stream)
-                .toArray();
-
-        return Arrays.stream(flattenArray).max().getAsInt();
+                .max().getAsInt();
     }
 
 /*

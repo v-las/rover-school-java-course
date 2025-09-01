@@ -5,13 +5,13 @@ import java.util.stream.IntStream;
 
 public class HomeWork004 {
     public static void main(String[] args) {
-/*
+        /*
         Задача №1
 
         Дан массив:
         int[] array = {9, 2, 6, 4, 5, 12, 7, 8, 6};
         необходимо вывести все нечетные числа из массива.
-*/
+        */
 
         int[] array = {9, 2, 6, 4, 5, 12, 7, 8, 6};
 
@@ -23,13 +23,13 @@ public class HomeWork004 {
 
         System.out.println();
 
-/*
+        /*
         Задача №2
 
         Дан массив:
         int[] array = {9, 2, 6, 4, 5, 12, 7, 8, 6};
         необходимо вывести все значения массива больше 5.
-*/
+        */
 
         for (int num : array) {
             if (num > 5) {
@@ -39,13 +39,13 @@ public class HomeWork004 {
 
         System.out.println();
 
-/*
+        /*
         Задача №3
 
         Дан массив:
         int[] array = {9, 2, 6, 4, 5, 12, 7, 8, 6};
         необходимо увеличить все значения массива на 15.
-*/
+        */
 
         for (int i = 0; i < array.length; i++) {
             array[i] += 15;
@@ -53,14 +53,14 @@ public class HomeWork004 {
 
         System.out.println("Arrays.toString(array) = " + Arrays.toString(array));
         System.out.println();
-/*
+        /*
         Задача №4
 
         Дана строка:
         String s = “Перестановочный алгоритм быстрого действия”;
         необходимо вывести все буквы “о”из этой строки.
         Для указанной строки ответ будет “ооооо”(или в столбик)
-*/
+        */
 
         String s = "Перестановочный алгоритм быстрого действия. Перевыборы выбранного президента";
 
@@ -73,14 +73,14 @@ public class HomeWork004 {
 
         System.out.println();
 
-/*
+        /*
         Задача №5
 
         Дана строка:
         String s = “Перевыборы выбранного президента”;
         необходимо подсчитать количество букв “е” в строке.
         Для указанной строки ответ будет 4.
-*/
+        */
 
         int charSum = 0;
 
@@ -93,13 +93,13 @@ public class HomeWork004 {
 
         System.out.println("charSum = " + charSum);
         System.out.println();
-/*
+        /*
         Задача №6
 
         Дан массив:
         int[] array = {9, 2, 6, 4, 5, 12, 7, 8, 6};
         необходимо вывести сумму всех значений массива.
-*/
+        */
         int numSum = 0;
 
         for (int num : array) {
@@ -108,7 +108,7 @@ public class HomeWork004 {
 
         System.out.println("numSum = " + numSum);
         System.out.println();
-/*
+        /*
         Задача №7
         (немного подумать придется)
 
@@ -119,8 +119,8 @@ public class HomeWork004 {
         60, 59, 58, 59, 64, 60,
         то среднее количество будет чуть меньше 60. Соответственно, коробка с 64 спичками будет
         сильно отличаться от среднего.
-*/
-
+        */
+        // Решение 1
         int[] matchesInBoxes = {61, 57, 50, 50, 62, 59, 65, 56, 60, 58, 63, 62, 55, 64, 59, 57, 61, 60, 65, 58};
 
         IntStream stream = IntStream.of(matchesInBoxes);
@@ -128,9 +128,9 @@ public class HomeWork004 {
         System.out.println("averageMatchesInBox = " + averageMatchesInBox);
 
         for (int matchesInBox : matchesInBoxes) {
-            if (matchesInBox != averageMatchesInBox) {
+            if (Math.abs(matchesInBox - averageMatchesInBox) > 3) {
                 System.out.printf(
-                        "Текущий коробок '%d' отличается от среднего '%d'.%n",
+                        "Текущий коробок '%d' отличается от среднего '%d' больше чем на 3 спички.%n",
                         matchesInBox, averageMatchesInBox
                 );
             }
@@ -138,6 +138,7 @@ public class HomeWork004 {
 
         System.out.println();
 
+        // Решение 2
         int boxesTotal = parseIntWithMessage("Сколько всего коробков?");
         int idealBox = 60;
         int idealOffset = parseIntWithMessage("Допустимая погрешность для количества спичек (±)?");
@@ -159,7 +160,7 @@ public class HomeWork004 {
             if (currentBox < averageBox - idealOffset || currentBox > averageBox + idealOffset) {
                 System.out.printf(
                         "Коробок №%3d [%3d шт.] отличается от среднего [%d шт.] на %d%n",
-                        i, currentBox, averageBox, Math.abs(currentBox - averageBox)
+                        i + 1, currentBox, averageBox, Math.abs(currentBox - averageBox)
                 );
             }
         }
