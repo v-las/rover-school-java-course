@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.net.*;
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -8,10 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class HomeWork006 {
-    public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
-
+    public static void main(String[] args) {
         task01();
         task02(emails);
         task03(numbers);
@@ -21,7 +20,7 @@ public class HomeWork006 {
         task07(passwordRegex, passwords);
         task08();
         task09();
-        task10();
+        task10(9);
     }
 
     private static void task01() {
@@ -71,25 +70,6 @@ public class HomeWork006 {
         }
         System.out.println();
     }
-
-    /*
-    private static void task01 () throws URISyntaxException, IOException, InterruptedException {
-    System.out.println("=== task01 ===\n);
-
-    / /        URL url = new URL("https://api/gismeteo.net/v3/weather/forecast/h24");
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI("https://api/gismeteo.net/v3/weather/forecast/h24"))
-                .GET()
-                .build();
-
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-        System.out.println("response.statusCode() = " + response.statusCode());
-        System.out.println("response.body() = " + response.body());
-
-    }
-    */
 
     private static void task02(String[] emailList) {
         System.out.println("=== task02 ===\n");
@@ -330,7 +310,7 @@ public class HomeWork006 {
                     .mapToObj(String::valueOf)
                     .toArray(String[]::new);
 
-            System.out.println(String.join(" ", range));
+            System.out.println(String.join("  ", range));
         }
 
         System.out.println();
@@ -356,13 +336,14 @@ public class HomeWork006 {
             String[] range = IntStream.rangeClosed(0, i)
                     .mapToObj(String::valueOf)
                     .toArray(String[]::new);
-            System.out.print(" ".repeat((9 - i) * 2));
-            System.out.println(String.join(" ", range));
+
+            System.out.print(" ".repeat((9 - i) * 3));
+            System.out.println(String.join("  ", range));
         }
         System.out.println();
     }
 
-    private static void task10() {
+    private static void task10(int lastNumber) {
         System.out.println("=== task10 ===\n");
         /*
                 Задача № 10
@@ -377,21 +358,39 @@ public class HomeWork006 {
                       2 1 0 1 2
                         1 0 1
                           0
-
         */
-        for (int i = 9; i >= 0; i--) {
+
+        // Решение 1
+        for (int i = lastNumber; i >= 0; i--) {
             String[] range = IntStream.rangeClosed(0, i)
                     .mapToObj(String::valueOf)
                     .toArray(String[]::new);
 
-            String[] copyOfRange = Arrays.copyOf(range,range.length - 1);
+            String[] copyOfRange = Arrays.copyOfRange(range, 1, range.length);
             Collections.reverse(Arrays.asList(copyOfRange));
 
+            String[] both = Stream.concat(
+                    Arrays.stream(copyOfRange),
+                    Arrays.stream(range)
+            ).toArray(String[]::new);
 
-            System.out.print(" ".repeat((9 - i) * 2));
-            System.out.print(String.join(" ", range) + " ");
-            System.out.println(String.join(" ", copyOfRange));
+            System.out.print(" ".repeat((lastNumber - i) * 2));
+            System.out.println(String.join(" ", both));
         }
+        System.out.println();
+
+        // Решение 2
+        IntStream.iterate(lastNumber, i -> i >= 0, i -> i - 1)
+                .forEach(i -> {
+                    String intendent = " ".repeat((lastNumber - i) * 2);
+
+                    String range = IntStream.rangeClosed(-i, i)
+                            .map(Math::abs)
+                            .mapToObj(String::valueOf)
+                            .collect(Collectors.joining(" "));
+
+                    System.out.println(intendent + range);
+                });
         System.out.println();
     }
 
