@@ -11,7 +11,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
 
 public class HomeWork006Api {
     public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
@@ -38,8 +37,14 @@ public class HomeWork006Api {
 
         double[] coordinates = randomCoordinates();
 
-        String uri = String.format("https://api.open-meteo.com/v1/forecast"+
-                "?latitude=%.2f&longitude=%.2f&daily=temperature_2m_max&past_days=31&forecast_days=1", coordinates[0], coordinates[1]);
+        String uri = String.format("https://api.open-meteo.com/v1/forecast" +
+                        "?latitude=%.2f" +
+                        "&longitude=%.2f" +
+                        "&daily=temperature_2m_max" +
+                        "&past_days=31" +
+                        "&forecast_days=1",
+                coordinates[0],
+                coordinates[1]);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -49,44 +54,38 @@ public class HomeWork006Api {
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println("response status Code = " + response.statusCode());
-//        System.out.println("response.body() = " + prettyPrintJSON(response.body()));
+        //        System.out.println("[response status Code][" + response.statusCode() + "]");
+        //        System.out.println("response.body() = " + prettyPrintJSON(response.body()));
 
         Gson gson = new Gson();
         Response responseBody = gson.fromJson(response.body(), Response.class);
-
         DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
 
         String unit = responseBody.daily_units().temperature_2m_max();
-
+        double[] temperatures = responseBody.daily().temperature_2m_max();
         String[] dates = Arrays.stream(responseBody.daily().time())
                 .map(LocalDate::parse)
                 .map(date -> date.format(formatter))
                 .toArray(String[]::new);
 
-        double[] temperatures = responseBody.daily().temperature_2m_max();
+        double maxTemperature = Arrays.stream(temperatures).max().getAsDouble();
+        double secondMaxTemperature = Arrays.stream(temperatures)
+                .filter(t -> t != maxTemperature)
+                .max().getAsDouble();
 
-        SortedSet<Double> temperaturesSet = Arrays.stream(responseBody.daily().temperature_2m_max())
-                .boxed()
-                .collect(Collectors.toCollection(TreeSet::new));
-        double previousMonthMaxTemperature = temperaturesSet.getLast();
-        System.out.printf("Max temperature in the last 31 days: %.1f%s%n", previousMonthMaxTemperature, unit);
-
-        temperaturesSet.remove(temperaturesSet.getLast());
-        double previousMonthSecondToMaxTemperature = temperaturesSet.getLast();
-        System.out.printf("Second to max temperature in the last 31 days: %.1f%s%n", previousMonthSecondToMaxTemperature, unit);
+        System.out.printf("Max temperature in the last 31 days: %.1f%s%n", maxTemperature, unit);
+        System.out.printf("Second to max temperature in the last 31 days: %.1f%s%n", secondMaxTemperature, unit);
 
         for (int i = 0; i < temperatures.length; i++) {
             double currentTemperature = temperatures[i];
             String currentDate = dates[i];
 
-//            System.out.printf("In the %s the t° was %.1f %s%n", dates[i], temperatures[i], unit);
-
-            if (currentTemperature == previousMonthMaxTemperature) {
+            if (currentTemperature == maxTemperature) {
                 System.out.printf("In the %s, was a MAX temperature day (%.1f%s)%n", currentDate, currentTemperature, unit);
-            } else if (currentTemperature == previousMonthSecondToMaxTemperature) {
+            } else if (currentTemperature == secondMaxTemperature) {
                 System.out.printf("In the %s, was a second to MAX temperature day (%.1f%s)%n", currentDate, currentTemperature, unit);
             }
+//            System.out.printf("In the %s the t° was %.1f %s%n", dates[i], temperatures[i], unit);
         }
     }
 
@@ -161,7 +160,7 @@ public class HomeWork006Api {
         double lat = ThreadLocalRandom.current().nextDouble(-90.0, 90.0);
         double lon = ThreadLocalRandom.current().nextDouble(-180.0, 180.0);
 
-        return new double[]{ lat, lon };
+        return new double[]{lat, lon};
 
     }
 }
