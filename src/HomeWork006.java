@@ -44,15 +44,19 @@ public class HomeWork006 {
         int lengthOfLastMonth = previousMonthValue.lengthOfMonth();
 
         int[] previousMonthTemperatures = ThreadLocalRandom.current()
-                .ints(lengthOfLastMonth, 5, 50).toArray();
+                .ints(lengthOfLastMonth, 5, 30).toArray();
 
         System.out.println("previousMonthTemperatures = " + Arrays.toString(previousMonthTemperatures));
 
 //        int previousMonthMaxTemperature = Arrays.stream(previousMonthTemperatures).max().getAsInt();
 //        System.out.println("previousMonthMaxTemperature = " + previousMonthMaxTemperature);
 
-        SortedSet<Integer> temperatures = Arrays.stream(previousMonthTemperatures).boxed().collect(Collectors.toCollection(TreeSet::new));
+        SortedSet<Integer> temperatures = Arrays.stream(previousMonthTemperatures)
+                .boxed()
+                .collect(Collectors.toCollection(TreeSet::new));
+
         int previousMonthMaxTemperature = temperatures.getLast();
+//        System.out.println("temperatures = " + temperatures);
         System.out.printf("Max temperature in %s: %d°%n", previousMonth, previousMonthMaxTemperature);
 
         temperatures.remove(temperatures.getLast());
@@ -73,14 +77,14 @@ public class HomeWork006 {
 
     private static void task02(String[] emailList) {
         System.out.println("=== task02 ===\n");
-/*
-        Задача № 2
+        /*
+            Задача № 2
 
-        У вас есть список адресов электронной почты.
-        Найдите все адреса с доменом gmail.com. Адреса поддельных сайтов типа myrealgmail.com не учитывать.
-        Найти самый короткий и самый длинный адреса.
-        Проверить, нет ли адресов с юзернеймом admin
-*/
+            У вас есть список адресов электронной почты.
+            Найдите все адреса с доменом gmail.com. Адреса поддельных сайтов типа myrealgmail.com не учитывать.
+            Найти самый короткий и самый длинный адреса.
+            Проверить, нет ли адресов с юзернеймом admin
+        */
         Pattern gmailPattern = Pattern.compile(gmailRegex);
         Pattern adminEmailPattern = Pattern.compile(adminEmailRegex);
 
@@ -382,14 +386,14 @@ public class HomeWork006 {
         // Решение 2
         IntStream.iterate(lastNumber, i -> i >= 0, i -> i - 1)
                 .forEach(i -> {
-                    String intendent = " ".repeat((lastNumber - i) * 2);
+                    String intendant = " ".repeat((lastNumber - i) * 2);
 
                     String range = IntStream.rangeClosed(-i, i)
                             .map(Math::abs)
                             .mapToObj(String::valueOf)
                             .collect(Collectors.joining(" "));
 
-                    System.out.println(intendent + range);
+                    System.out.println(intendant + range);
                 });
         System.out.println();
     }
