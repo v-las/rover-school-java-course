@@ -89,6 +89,7 @@ public class HomeWork006 {
         Pattern adminEmailPattern = Pattern.compile(adminEmailRegex);
 
         boolean hasAdminEmail = Arrays.stream(emailList)
+                .map(String::toLowerCase)
                 .anyMatch(email -> email.matches(adminEmailRegex));
         System.out.println("has Admin Email: " + hasAdminEmail);
 
@@ -101,10 +102,12 @@ public class HomeWork006 {
         System.out.println("Shortest email: " + shortestEmail);
 
         for (String currentEmail : emailList) {
-            Matcher gmailMatcher = gmailPattern.matcher(currentEmail);
+            String currentEmailLowerCase = currentEmail.toLowerCase();
+
+            Matcher gmailMatcher = gmailPattern.matcher(currentEmailLowerCase);
             boolean isValidGmail = gmailMatcher.matches();
 
-            Matcher adminEmailMatcher = adminEmailPattern.matcher(currentEmail);
+            Matcher adminEmailMatcher = adminEmailPattern.matcher(currentEmailLowerCase);
             boolean isValidAdminEmail = adminEmailMatcher.matches();
 
             if (isValidGmail) {
@@ -136,12 +139,12 @@ public class HomeWork006 {
 
     private static void task04(int[][] array) {
         System.out.println("=== task04 ===\n");
-    /*
-        Задача № 4
-        Возьмите массив из предыдущей задачи, и выведите в одну строку все числа, лежащие на
-        его диагонали от верхнего левого угла до нижнего правого.
-        В другой строке — числа на другой диагонали, от верхнего правого до нижнего левого углов.
-    */
+        /*
+            Задача № 4
+            Возьмите массив из предыдущей задачи, и выведите в одну строку все числа, лежащие на
+            его диагонали от верхнего левого угла до нижнего правого.
+            В другой строке — числа на другой диагонали, от верхнего правого до нижнего левого углов.
+        */
         int[] topLeft = new int[array.length];
         int[] topRight = new int[array.length];
 
@@ -403,7 +406,7 @@ public class HomeWork006 {
             "plainaddress",
             "k9fg51wr@mail.com",
             "0gtpbi@protonmail.com",
-            "k8y5j4a8ss8@gmail.com",
+            "k8y5j4a8ss8@GMAIL.com",
             "kdjp83sw-v@protonmail.com",
             "l0-rpb@icloud.com",
             "ptzgept4g@gmail.com",
@@ -417,7 +420,7 @@ public class HomeWork006 {
             "plainaddress",
             "w002she@gmail.com",
             "sxzztvlloqx@hotmail.com",
-            "s96ic7xbr@gmail.com",
+            "ADMIN@gmail.com",
             "jg44lzxt@icloud.com",
             "dwrrb@yahoo.com",
             "9mexgj0lwsg@gmail.com",

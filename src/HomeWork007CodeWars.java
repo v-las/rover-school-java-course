@@ -57,5 +57,4 @@ public class HomeWork007CodeWars {
                 .mapToObj(n -> n + " sheep...")
                 .collect(Collectors.joining());
     }
-
 }
