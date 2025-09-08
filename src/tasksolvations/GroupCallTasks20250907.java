@@ -1,3 +1,5 @@
+package tasksolvations;
+
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.stream.Collectors;

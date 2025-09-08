@@ -1,3 +1,5 @@
+package homeworks;
+
 import java.util.stream.Stream;
 
 public class HomeWork001 {

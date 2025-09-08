@@ -1,3 +1,5 @@
+package misc;
+
 public class BitmaskDemo {
     // Флаги — степени двойки
     static final int READ = 1 << 0; // 0001

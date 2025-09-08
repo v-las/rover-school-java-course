@@ -1,4 +1,5 @@
-import java.net.*;
+package homeworks;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.*;
@@ -176,6 +177,7 @@ public class HomeWork006 {
         7 6 8
     */
         int[][] newArray = new int[array.length][array.length];
+
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 newArray[j][i] = array[i][j];
@@ -208,7 +210,7 @@ public class HomeWork006 {
 
             Имейте в виду, что некоторые проверки можно делать легче, чем другие. Поэкспериментируйте.
     */
-        String test = """
+        String testStr = """
                 I’m just 16,
                 going on	17!""";
 
@@ -220,8 +222,10 @@ public class HomeWork006 {
         int numberOfSymbols = 0;
         int numberOfSpaces = 0;
 
-        for (int i = 0; i < test.length(); i++) {
-            char c = test.charAt(i);
+        // решение 1
+
+        for (int i = 0; i < testStr.length(); i++) {
+            char c = testStr.charAt(i);
 
             if (c > 65 && c <= 90) {
                 numberOfCapitals++;
@@ -256,8 +260,35 @@ public class HomeWork006 {
             if (c == 32 || c == 9 || c == 10 || c == 13) {
                 numberOfSpaces++;
             }
+        }
+
+        // решение 2
+
+        for (int i = 0; i < testStr.length(); i++) {
+            char currChar = testStr.charAt(i);
+            String vowels = "aeiuo";
+
+            if (Character.isLetter(currChar)) {
+                if (Character.isUpperCase(currChar)) {
+                    numberOfCapitals++;
+                } else {
+                    numberOfMiniscules++;
+                }
+                if (vowels.indexOf(Character.toLowerCase(currChar)) > -1) {
+                    numberOfVowels++;
+                } else {
+                    numberOfConsonant++;
+                }
+            } else if (Character.isDigit(currChar)) {
+                numberOfDigits++;
+            } else if (Character.isWhitespace(currChar)) {
+                numberOfSpaces++;
+            } else {
+                numberOfSymbols++;
+            }
 
         }
+        
         System.out.println("numberOfCapitals: " + numberOfCapitals);
         System.out.println("numberOfMiniscules: " + numberOfMiniscules);
         System.out.println("numberOfVowels: " + numberOfVowels);

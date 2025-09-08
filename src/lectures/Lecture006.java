@@ -1,7 +1,8 @@
-import java.util.Arrays;
-import java.util.stream.Collectors;
+package lectures;
 
-public class Lesson006 {
+import java.util.Arrays;
+
+public class Lecture006 {
     public static void main(String[] args) {
         foo();
         bar();
