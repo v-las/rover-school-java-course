@@ -1,7 +1,5 @@
 package lectures.lecture008;
 
-import static lectures.lecture008.SellingCars.forSaleAd;
-
 public class Main {
     public static void main(String[] args) {
         int[] temps = {43, 32, 12, 11};
@@ -29,10 +27,9 @@ public class Main {
 
         return result;
     }
+}
 
-    static class HottestDays {
-        public int hottestTemp;
-        public int secondHottestTemp;
-    }
-
+class HottestDays {
+    public int hottestTemp;
+    public int secondHottestTemp;
 }

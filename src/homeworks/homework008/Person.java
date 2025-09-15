@@ -2,24 +2,31 @@ package homeworks.homework008;
 
 public class Person {
     //    Задача №1
-    //    Необходимо создать класс homeworks.homework008.Person с полями: имя, возраст, пол.
+    //    Необходимо создать класс homeworks.homework008.temp.Person с полями: имя, возраст, пол.
     //    Класс должен иметь метод - getName, метод возвращает имя с префиксом “Mr. ”
     //    если пол указан как мужской и префикс “Mrs. ” если женский.
-    Person(String name, int age, String gender) {
-        this.name = name;
+
+    String firstName;
+    String lastName;
+    int age;
+    String gender;
+
+    public Person(String firstName, String lastName, int age, String gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
         this.gender = gender;
     }
 
-    String name;
-    int age;
-    String gender;
+    public Person(String lastName) {
+        this.lastName = lastName;
+    }
 
-    String getName() {
+    public String getName() {
         if (gender.equals("male")) {
-            return "Mr. " + name;
+            return "Mr." + lastName;
         } else if (gender.equals("female")) {
-            return "Mrs. " + name;
+            return "Mrs." + lastName;
         } else {
             return "Can be 'male' or 'female'";
         }

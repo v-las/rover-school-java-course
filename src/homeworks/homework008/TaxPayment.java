@@ -39,7 +39,7 @@ public class TaxPayment {
                 taxableIncome = salaryAfterChildDeduction * 23 / 100;
             }
 
-            taxableIncomes[i] = new TaxPayment(e.name, taxableIncome);
+            taxableIncomes[i] = new TaxPayment(e.lastName, taxableIncome);
         }
 
         return taxableIncomes;
