@@ -6,8 +6,13 @@ public class Worker extends Employee {
         super(name, baseSalary);
     }
 
+//    @Override
+//    public double getSalary() {
+//        return super.getBaseSalary();
+//    }
+
     @Override
-    public double getSalary() {
-        return super.getBaseSalary();
+    public String toString() {
+        return "Worker{} " + super.toString();
     }
 }

@@ -7,8 +7,12 @@ public class Director extends Manager {
     }
 
     @Override
-    public double getSalary() {
-        double bonus = (double) this.getNumberOfSubordinates() / 100 * 9;
-        return super.getBaseSalary() + super.getBaseSalary() * bonus;
+    public double getBonus() {
+        return super.getBaseSalary() * (double) super.getNumberOfSubordinates() / 100 * 9;
+    }
+
+    @Override
+    public String toString() {
+        return "Director{} " + super.toString();
     }
 }

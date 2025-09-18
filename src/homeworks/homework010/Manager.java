@@ -1,6 +1,6 @@
 package homeworks.homework010;
 
-public class Manager extends Employee {
+public class Manager extends Worker {
 
     private int numberOfSubordinates;
 
@@ -17,9 +17,19 @@ public class Manager extends Employee {
         this.numberOfSubordinates = numberOfSubordinates;
     }
 
+    public double getBonus() {
+        return super.getBaseSalary() * (double) numberOfSubordinates / 100 * 3;
+    }
+
     @Override
     public double getSalary() {
-        double bonus = (double) numberOfSubordinates / 100 * 3;
-        return super.getBaseSalary() + super.getBaseSalary() * bonus;
+        return super.getBaseSalary() + this.getBonus();
+    }
+
+    @Override
+    public String toString() {
+        return "Manager{" +
+                "numberOfSubordinates=" + numberOfSubordinates +
+                "} " + super.toString();
     }
 }

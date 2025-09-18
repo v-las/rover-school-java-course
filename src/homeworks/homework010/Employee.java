@@ -21,11 +21,19 @@ public class Employee {
         return baseSalary;
     }
 
-    public void setBaseSalary(int baseSalary) {
-        this.baseSalary = baseSalary;
-    }
+//    public void setBaseSalary(int baseSalary) {
+//        this.baseSalary = baseSalary;
+//    }
 
     public double getSalary() {
         return baseSalary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", baseSalary=" + baseSalary +
+                '}';
     }
 }
