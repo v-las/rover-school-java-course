@@ -1,6 +1,9 @@
 package homeworks.homework010;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class Utils {
 
@@ -38,7 +41,19 @@ public class Utils {
                 .max().orElse(0.0);
     }
 
-    // findManagerWithMinSubordinates
+    public static Manager findManagerWithMinSubordinates(Manager[] managers) {
+        return Arrays.stream(managers)
+                .filter(Objects::nonNull)
+                .min(Comparator.comparingInt(Manager::getNumberOfSubordinates))
+                .orElseThrow(() -> new NoSuchElementException("No managers found"));
+    }
+
+    public static Manager findManagerWithMaxSubordinates(Manager[] managers) {
+        return Arrays.stream(managers)
+                .max(Comparator.comparingInt(Manager::getNumberOfSubordinates))
+                .orElse(null);
+    }
+
     public static int getMinSubordinates(Manager[] managers) {
         return Arrays.stream(managers)
                 .mapToInt(Manager::getNumberOfSubordinates)
