@@ -21,10 +21,10 @@ public class Person {
             return switch (this.gender) {
                 case 'm' -> "Mr." + name;
                 case 'f' -> "Mrs." + name;
-                default -> "Has no gender";
+                default -> name;
             };
         } else {
-            return this.name;
+            return this.getName();
         }
     }
 

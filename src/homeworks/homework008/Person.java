@@ -28,7 +28,7 @@ public class Person {
         } else if (gender.equals("female")) {
             return "Mrs." + lastName;
         } else {
-            return "Can be 'male' or 'female'";
+            return lastName;
         }
     }
 }
