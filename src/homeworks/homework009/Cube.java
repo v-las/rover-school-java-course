@@ -17,6 +17,5 @@ public class Cube {
         Cube c = new Cube();
         c.setSide(3);
         System.out.println("exp:" + 3 + " | act: " + c.getSide());
-
     }
 }

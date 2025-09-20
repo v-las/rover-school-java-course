@@ -2,9 +2,9 @@ package homeworks.homework009;
 
 public class Person {
 
-    public String name;
-    public int age;
-    public char gender;
+    private String name;
+    private int age;
+    private char gender;
 
     public Person(String name, int age, char gender) {
         this.name = name;
@@ -13,12 +13,19 @@ public class Person {
     }
 
     public String getName() {
+        return this.name;
+    }
 
-        return switch (this.gender) {
-            case 'm' -> "Mr." + name;
-            case 'f' -> "Mrs." + name;
-            default -> "Has no gender";
-        };
+    public String getName(boolean isOfficial) {
+        if (isOfficial) {
+            return switch (this.gender) {
+                case 'm' -> "Mr." + name;
+                case 'f' -> "Mrs." + name;
+                default -> "Has no gender";
+            };
+        } else {
+            return this.name;
+        }
     }
 
     public void setName(String name) {

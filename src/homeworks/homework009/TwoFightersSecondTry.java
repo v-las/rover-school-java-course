@@ -85,6 +85,5 @@ public class TwoFightersSecondTry {
                         new Fighter("Victor", 70, 20),
                         new Fighter("Chris", 100, 5),
                         "Chris"));
-
     }
 }

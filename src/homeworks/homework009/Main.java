@@ -19,7 +19,7 @@ public class Main {
         System.out.println("e1 and e3 same name? " + e1.isSameName(e3));
 
         Employee[] employees = {e1, e2, e3};
-        int totalSalary = Salary.getSum(employees);
+        int totalSalary = SalaryHelper.getSum(employees);
 
         System.out.println("Total salary of employees: " + totalSalary);
 
@@ -27,7 +27,7 @@ public class Main {
         System.out.println("Updated salary for e1: " + e1.getSalary());
 
         e2.setName("Daniel");
-        System.out.println("Updated name for e2: " + e2.getName());
+        System.out.println("Updated official name for e2: " + e2.getName(true));
 
         e3.setAge(31);
         System.out.println("Updated age for e3: " + e3.getAge());

@@ -17,6 +17,6 @@ public class Employee extends Person {
     }
 
     public boolean isSameName(Employee employee) {
-        return employee.name.equals(this.name);
+        return employee.getName().equals(this.getName());
     }
 }
