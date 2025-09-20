@@ -1,4 +1,4 @@
-package tasksolvations;
+package homeworks.homework009;
 
 public class Block {
     private int width;

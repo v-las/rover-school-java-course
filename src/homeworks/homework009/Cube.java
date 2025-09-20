@@ -1,4 +1,4 @@
-package tasksolvations;
+package homeworks.homework009;
 
 // Playing with cubes I
 // https://www.codewars.com/kata/55c0a79e20be94c91400014b/train/java

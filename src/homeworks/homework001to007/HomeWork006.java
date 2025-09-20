@@ -1,4 +1,4 @@
-package homeworks;
+package homeworks.homework001to007;
 
 import java.time.LocalDate;
 import java.time.YearMonth;

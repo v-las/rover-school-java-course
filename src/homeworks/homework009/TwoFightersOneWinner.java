@@ -1,4 +1,4 @@
-package tasksolvations;
+package homeworks.homework009;
 
 import java.util.Arrays;
 
@@ -46,7 +46,7 @@ public class TwoFightersOneWinner {
         }
     }
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         // Tests
         System.out.println("exp: " + "Lew" + " | act: " +
                         TwoFightersOneWinner.declareWinner(
@@ -119,26 +119,5 @@ public class TwoFightersOneWinner {
                                 new Fighter("Victor", 70, 20),
                                 new Fighter("Chris", 100, 5),
                                 "Chris"));
-
-    }
-}
-
-class Fighter {
-    public String name;
-    public int health;
-    public int damagePerAttack;
-
-    public Fighter(String name, int health, int damagePerAttack) {
-        this.name = name;
-        this.health = health;
-        this.damagePerAttack = damagePerAttack;
-    }
-
-    @Override
-    public String toString() {
-        return "[" + name +
-                ", HP: " + health +
-                ", DMG: " + damagePerAttack +
-                ']';
     }
 }
