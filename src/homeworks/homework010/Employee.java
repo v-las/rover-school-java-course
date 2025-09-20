@@ -2,7 +2,7 @@ package homeworks.homework010;
 
 public class Employee {
     private String name;
-    private int baseSalary;
+    private final int baseSalary;
 
     public Employee(String name, int baseSalary) {
         this.name = name;
@@ -20,10 +20,6 @@ public class Employee {
     public int getBaseSalary() {
         return baseSalary;
     }
-
-//    public void setBaseSalary(int baseSalary) {
-//        this.baseSalary = baseSalary;
-//    }
 
     public double getSalary() {
         return baseSalary;
