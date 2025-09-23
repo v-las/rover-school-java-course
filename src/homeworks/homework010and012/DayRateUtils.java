@@ -1,11 +1,11 @@
-package homeworks.homework010;
+package homeworks.homework010and012;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class Utils {
+public class DayRateUtils {
 
     public static Employee findByName(String name, Employee[] employees) {
         return Arrays.stream(employees)
@@ -23,21 +23,30 @@ public class Utils {
                 .findFirst().orElse(null);
     }
 
-    public static double sumSalary(Employee[] employees) {
+    public static double sumDayRates(Employee[] employees) {
         return Arrays.stream(employees)
-                .mapToDouble(Employee::getSalary)
+                .mapToDouble(Employee::getDayRate)
                 .sum();
     }
 
-    public static double getMinSalary(Employee[] employees) {
+    public static double    calculateTotalSalaryForPeriod(Employee[] employees, Month[] months) {
+        double dayRateTotal = sumDayRates(employees);
+        int workDaysTotal = Arrays.stream(months)
+                .mapToInt(Month::getWorkDaysCount)
+                .sum();
+
+        return workDaysTotal * dayRateTotal;
+    }
+
+    public static double getMinDayRate(Employee[] employees) {
         return Arrays.stream(employees)
-                .mapToDouble(Employee::getSalary)
+                .mapToDouble(Employee::getDayRate)
                 .min().orElse(0.0);
     }
 
-    public static double getMaxSalary(Employee[] employees) {
+    public static double getMaxDayRate(Employee[] employees) {
         return Arrays.stream(employees)
-                .mapToDouble(Employee::getSalary)
+                .mapToDouble(Employee::getDayRate)
                 .max().orElse(0.0);
     }
 

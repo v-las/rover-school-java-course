@@ -1,11 +1,11 @@
-package homeworks.homework010;
+package homeworks.homework010and012;
 
 public class Manager extends Worker {
 
     private int numberOfSubordinates;
 
-    public Manager(String name, int baseSalary, int numberOfSubordinates) {
-        super(name, baseSalary);
+    public Manager(String name, int baseDayRate, int numberOfSubordinates) {
+        super(name, baseDayRate);
         this.numberOfSubordinates = numberOfSubordinates;
     }
 
@@ -18,12 +18,12 @@ public class Manager extends Worker {
     }
 
     public double getBonus() {
-        return super.getBaseSalary() * (double) numberOfSubordinates / 100 * 3;
+        return super.getBaseDayRate() * (double) numberOfSubordinates / 100 * 3;
     }
 
     @Override
-    public double getSalary() {
-        return super.getBaseSalary() + this.getBonus();
+    public double getDayRate() {
+        return super.getBaseDayRate() + this.getBonus();
     }
 
     @Override
